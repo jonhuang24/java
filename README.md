@@ -224,15 +224,15 @@ while ( 5 > 0 || 100 < 0 ) { ... }
 
 ## Changing colors
 
-Students will now use the keys on the keyboard to change the drawing color. To do this, they need to add an `if` condition to their `while` loop to set a different color when a certain key is pressed.
+Let's use the keys on the keyboard to change the drawing color. To do this, you need to add an `if` condition to your `while` loop to set a different color when a certain key is pressed.
 
-Start by writing out the instruction they would need to do.
+Start by writing out the instruction you would need to do.
 ```java
 Zen.create(500, 500);
 Zen.setColor("red");
 while (1 < 2) {
 	
-	// Add in the line below
+	// Add in the instruction below
 	Zen.setColor("blue");
 
 	Zen.fillOval(Zen.getMouseX(), Zen.getMouseY(), 50, 50);
@@ -240,33 +240,33 @@ while (1 < 2) {
 }
 ```
 
-If they run it now, the color of the oval will always be blue. They can change it so setting it to blue only happens if the `b` key is pressed. Starting with the same process as before, where they put curly braces first around the code they want to do:
+If you run it now, the color of the oval will always be blue. You can change it so setting it to blue only happens if the `b` key is pressed. Starting with the same process as before, where you first put curly braces around the code they want to do:
 ```java
 {
 	Zen.setColor("blue");
 }
 ```
 
-And then control when the code should be run using an `if` condition, which only runs the code block if its given condition is true. The major distinction between `if` and `while` is that an `if` condition only checks the condition once, while a `while` loop will check the condition every time until it evaluates to `false`.
+Then control when the code should be run using an `if` condition, which only runs the code block if its given condition is true. The major distinction between `if` and `while` is that an `if` condition only checks the condition once, while a `while` loop will check the condition every time until it evaluates to `false`.
 ```java
 if ( ) {
 	Zen.setColor("blue");
 }
 ```
 
-If they add an always-true condition to the if, they will see it always sets the color to blue. If they add an always-false condition, it will remain its original color.
+If you add an always-true condition to the if, you will see it always sets the color to blue. If you add an always-false condition, it will remain its original color.
 ```java
 if ( 1 < 2 ) {
 	Zen.setColor("blue");
 }
 ```
 
-In this situation, *just as they asked Zen for a number representing the position of the mouse, they can ask Zen for the answer to a true/false question*. The answer is provided by the `Zen.isKeyPressed` method:
+In this situation, *just as you asked Zen for a number representing the position of the mouse, you can ask Zen for the answer to a true/false question*. The answer is provided by the `Zen.isKeyPressed` method:
 ```java
 Zen.isKeyPressed("b")
 ```
 
-So the condition to their if could be the answer to `Zen.isKeyPressed("b")`, so their final code would look like this:
+So the condition to your if could be the answer to `Zen.isKeyPressed("b")`:
 ```java
 Zen.create(500, 500);
 Zen.setColor("red");
@@ -281,7 +281,7 @@ while (1 < 2) {
 }
 ```
 
-They could add in multiple `if` conditions to check different keys and change the color accordingly.
+You could add in multiple `if` conditions to check different keys and change the color accordingly.
 ```java
 Zen.create(500, 500);
 
@@ -301,4 +301,34 @@ while (1 < 2) {
 }
 ```
 
+## Advanced continuations
+
+If you've already done this lesson, or you just sped through the basics, here are some advanced continuations that you can use to make your application draw continuous lines or talk over the web.
+
+### Drawing a continuous line
+
+Every time you fill in a point, you are leaving a large gap between the current point you're filling in and the point before it. To fix this, you can use the `Zen.drawLine` method, which draws a line between two (x, y) coordinates.
+```java
+Zen.drawLine(x1, y1, x2, y2);
+```
+
+The `Zen.drawLine` method works like any other `Zen` drawing method, where you can change the line color with `setColor` and you can plug in different inputs to `x1`, `x2`, `y1`, and `y2`. 
+
+Try using `Zen.drawLine` to draw a line between the previous point you drew and the current point where the mouse pointer is. Some guidelines for completing this part:
+ - you'll have to make new variables. If you don't remember how to use variables, the general idea is to make a variable by specifying the type and a unique name, like `int x`, and then giving it values by `x = ...`.
+ - you'll have to think along the lines of "how do I store where the mouse pointer used to be, and draw a line from that point to where the mouse pointer currently is?". You'll have to extend your thinking to what is happening *between* frames.
+ - the order of your instructions is really important.
+
+### Hooking it up over the web
+
+`Zen` has some built-in utility functions to share data with other `Zen` applications. To start off, add `Zen.connect` to the very top of your `main` method:
+```java
+public class Drawing {
+	public static void main(String[] args) {
+		Zen.connect("apples");
+	}
+}
+```
+
+[ One second - the rest of this is on the way! ]
 
