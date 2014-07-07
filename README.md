@@ -321,7 +321,14 @@ Try using `Zen.drawLine` to draw a line between the previous point you drew and 
 
 ### Hooking it up over the web
 
-`Zen` has some built-in utility functions to share data with other `Zen` applications. To start off, add `Zen.connect` to the very top of your `main` method:
+`Zen` has some built-in utility functions to share data with other `Zen` applications. The general way to connect your Zen applications over the web is to
+ - Use `Zen.connect` to join a lab where you can share data with other people.
+ - Make stuff in your regular `Zen` application move around.
+ - Use `Zen.write` to write labeled information about your moving stuff to your lab.
+ - Use `Zen.read` and `Zen.readInt` to read labeled information from your lab.
+ - Use the labeled information to move things around on your screen.
+
+To start off, add `Zen.connect` to the very top of your `main` method:
 ```java
 public class Drawing {
 	public static void main(String[] args) {
@@ -330,5 +337,59 @@ public class Drawing {
 }
 ```
 
-[ One second - the rest of this is on the way! ]
+Once you've connected, you can write a labeled piece of information to the web using `Zen.write`.
+```java
+Zen.write("dalmations", 101);
+```
+
+Once you've written some data, **anyone connected to the same lab can read it back with `Zen.readInt`**. 
+```java
+int d = Zen.readInt("dalmations");
+// d will be set to 101
+```
+
+You can use this idea to write the x and y coordinate of your mouse to the web, and have your partner read it out. For example, if there are two partners in your Java class Bob and Joe, and theyw anted to hook up their apps over the web, they could do something like this:
+
+**Bob would write his position to the web.**
+```java
+Zen.connect("bob and joe");
+
+Zen.create(500, 500);
+// Any drawing and sleeping code from the last lesson.
+Zen.setColor("red");
+
+while (1 < 2) {
+	// Write my x and y position to the web
+	Zen.write("bob's x", Zen.getMouseX());
+	Zen.write("bob's y", Zen.getMouseY());
+
+	Zen.fillOval(Zen.getMouseX(), Zen.getMouseY(), 50, 50);
+	Zen.sleep(100);
+}
+```
+
+On Joe's computer, he will read in the x position with `Zen.readInt("bob's x")` and the y position with `Zen.readInt("bob's y")`, and draw an oval wherever the x and y coordinate indicates.
+```
+Zen.connect("bob and joe");
+Zen.create(500, 500);
+// Any drawing and sleeping code from the last lesson.
+Zen.setColor("red");
+
+while (1 < 2) {
+	// Write my x and y position to the web
+	Zen.fillOval(Zen.readInt("bob's x"), Zen.readInt("bob's y"), 50, 50);
+
+	Zen.fillOval(Zen.getMouseX(), Zen.getMouseY(), 50, 50);
+	Zen.sleep(100);
+}
+```
+Notice how both bob and joe connect to the lab `"bob and joe"`. This allows them to read and write data from the same place.
+
+Once you've hooked up your drawing tool to a partner's, try the following read/write exercises.
+ - Bob can write his mouse position onto Joe's screen - how would you do it the other way around?
+ - How could you read/write the current drawing color, so when you change the drawing color on your screen it changes on the other person's screen as well?
+ - See how many people you can get to join your room and have show up on your window.
+ 
+
+
 
