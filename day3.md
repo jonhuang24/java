@@ -67,13 +67,33 @@ Oval o = new Oval(10, 50);		// width 10, height 50
 ```
 
 ### Rectangles
+
+Make sure that when you import the `Rectangle` class, you are importing it from `zen.shape.Rectangle` and **not from `java.awt.Rectangle``**!
+
 ```java
 Rectangle r = new Rectangle(60, 80); 	// width 60, height 80
 ```
 
+### Triangles
 
+When you make a triangle, you need to give six inputs, which correspond to the three vertices of the triangle.
+```java
+Triangle t = new Triangle( x1, y1, x2, y2, x3, y3 );
+Triangle t = new Triangle( 50, 100, 30, 40, 80, 50);
+```
 
+### Polygons
 
+To make polygons, you need to make any number of `Point` objects. Make sure that when you import the `Point` class, you are importing it from `zen.shape.Point` and **not from `java.awt.Point``**!
+
+```java
+Point p1 = new Point(200, 300);
+Point p2 = new Point(300, 500);
+...
+Point pn = new Point(200, 400);
+
+Polygon poly = new Polygon(p1, p2, p3, ..., pn);
+```
 
 
 
