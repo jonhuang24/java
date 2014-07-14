@@ -26,7 +26,11 @@ public class GameOfLife {
 	}
 
 	private static void checkClick() {
-		// Starting point
+		if (Zen.isMouseClicked()) {
+			int x = Zen.getMouseClickX() / 10;
+			int y = Zen.getMouseClickY() / 10;
+			grid[x][y] = true;
+		}
 	}
 
 	private static void transition() {
