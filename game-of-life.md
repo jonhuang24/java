@@ -1,6 +1,9 @@
-## Conway's Game of Life
+# Conway's Game of Life
 
 [TODO: add links and description]
+
+
+## The code
 
 ```java
 import zen.core.Zen;
@@ -23,8 +26,7 @@ public class GameOfLife {
 	}
 
 	private static void checkClick() {
-		// TODO Auto-generated method stub
-		
+		// Starting point
 	}
 
 	private static void transition() {
@@ -100,3 +102,12 @@ public class GameOfLife {
 
 }
 ```
+
+## Your work for home
+
+ - Be able to click into the game and add cells
+ - Be able to pause and unpause the game
+ - Be able to change the size and cell size of the game
+ - Be able to add in life forms
+ - Show a really thin line in between cells
+ - **If you want a smushed penny** - make an undo option with a "memory size"
