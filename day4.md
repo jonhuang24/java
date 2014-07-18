@@ -1,4 +1,4 @@
-# Java Day 4
+# Making classes
 
 Yesterday we gave you classes that we had designed to make it easier to design compelling `Zen` games. Today, you're going to design your own class to represent a ball that can bounce off the edges of the window. In this particular example, we'll ignore gravity and assume the ball doesn't slow down.
 
